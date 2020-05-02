@@ -6,6 +6,7 @@ const yts = require( 'yt-search' )
 const request = require("request")
 const ytdl = require("ytdl-core")
 const prefix = "tod";
+const token = "NzAxNDAyNDkwNzQ2MzA2NTcw.Xq1Eaw.dHl3Cnwe1Jj4UnKaRB56oh2miYk"
 
 
 const queue = [];
@@ -399,4 +400,4 @@ function image(message, keyword){
     });
 }
 
-bot.login(process.env.TOKEN);
+bot.login(token);
