@@ -5,7 +5,7 @@ const cheerio =  require("cheerio")
 const yts = require( 'yt-search' )
 const request = require("request")
 const ytdl = require("ytdl-core")
-const token = "NzAxNDAyNDkwNzQ2MzA2NTcw.Xpw-Aw.gvBwy5ErJXPnEFr5MdJ_BXXUX3k";
+const token = "NzAxNDAyNDkwNzQ2MzA2NTcw.Xq09yg.lJozozGXjqBrsl7pZO2SbnN3kLQ";
 const prefix = "tod";
 
 
