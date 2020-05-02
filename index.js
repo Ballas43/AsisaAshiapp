@@ -5,7 +5,6 @@ const cheerio =  require("cheerio")
 const yts = require( 'yt-search' )
 const request = require("request")
 const ytdl = require("ytdl-core")
-const token = "NzAxNDAyNDkwNzQ2MzA2NTcw.Xq09yg.lJozozGXjqBrsl7pZO2SbnN3kLQ";
 const prefix = "tod";
 
 
@@ -400,4 +399,4 @@ function image(message, keyword){
     });
 }
 
-bot.login(token);
+bot.login(process.env.BOT_TOKEN);

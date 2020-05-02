@@ -1,7 +1,7 @@
 {
   "name": "discord",
   "version": "1.0.0",
-  "description": "",
+  "description": "AIO Bot",
   "main": "index.js",
   "dependencies": {
     "@discordjs/opus": "^0.1.0",
