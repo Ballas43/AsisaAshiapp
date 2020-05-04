@@ -253,6 +253,7 @@ bot.on('message', async message => {
                             console.log('Beres');
                             connect.disconnect();
                             isplaying = "stopped"
+                            pos = 0
                         } else {
                             queue.shift();
                             pos = pos - 1
@@ -305,6 +306,7 @@ bot.on('message', async message => {
                             console.log('Beres');
                             connect.disconnect();
                             isplaying = "stopped"
+                            pos = 0
                         } else {
                             queue.shift();
                             pos = pos - 1
