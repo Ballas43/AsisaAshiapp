@@ -399,6 +399,7 @@ function image(message, keyword){
  
     
         message.channel.send( urls[Math.floor(Math.random() * urls.length)]);
+        urls = [];
     });
 }
 
