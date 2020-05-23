@@ -1,7 +1,7 @@
 const {Client, MessageAttachment} = require("discord.js");
 const emd = require('discord.js');
 const bot = new Client();
-const cheerio =  require("cheerio")
+const image = require('g-i-s')
 const yts = require( 'yt-search' )
 const request = require("request")
 const ytdl = require("ytdl-core")
@@ -358,46 +358,18 @@ bot.on('message', async message => {
 }); 
 
 
-
-
 function image(message, keyword){
  
-    var options = {
-        url: "http://results.dogpile.com/serp?qc=images&q=" + keyword,
-        method: "GET",
-        headers: {
-            "Accept": "text/html",
-            "User-Agent": "Chrome"
-        }
-    };
- 
- 
- 
- 
- 
-    request(options, function(error, response, responseBody) {
-        if (error) {
-            return;
-        }
- 
- 
-        $ = cheerio.load(responseBody);
- 
- 
-        var links = $(".image a.link");
- 
-        var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
-       
-        console.log(urls);
- 
-        if (!urls.length) {
-           
-            return;
-        }
- 
+    image(keyword, logResults)
     
-        message.channel.send( urls[Math.floor(Math.random() * urls.length)]);
-    });
+    function logResults(error, results) {
+        if (error) {
+          console.log(error);
+        }
+        else {
+          message.channel.send(results[Math.floor(Math.random() * results.length)].url);
+        }
+      }
 }
 
 bot.login(token);
