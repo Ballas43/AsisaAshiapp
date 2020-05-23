@@ -3,7 +3,7 @@ const emd = require('discord.js');
 const bot = new Client();
 const yts = require( 'yt-search' )
 const request = require("request")
-const image =  require("images-scraper")
+const image_search =  require("images-scraper")
 const ytdl = require("ytdl-core")
 const prefix = "tod";
 const token = "NzAxNDAyNDkwNzQ2MzA2NTcw.Xq1Eaw.dHl3Cnwe1Jj4UnKaRB56oh2miYk"
@@ -364,7 +364,7 @@ bot.on('message', async message => {
 
 function image(message, keyword){
  
-    const gimage = new image({
+    const gimage = new image_search({
         puppeteer: {
             headless: true,
         }
