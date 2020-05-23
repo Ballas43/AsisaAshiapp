@@ -369,7 +369,8 @@ function image(message, keyword){
         else {
           message.channel.send(results[Math.floor(Math.random() * results.length)].url);
         }
-      }
+        results=[]
+    }
 }
 
 bot.login(token);
