@@ -362,18 +362,16 @@ bot.on('message', async message => {
 
 
 
-function image(message, keyword){
+async function image(message, keyword){
  
     const gimage = new image_search({
         puppeteer: {
             headless: true,
         }
     })
-    
-    (async () => {
-        const result =  await gimage.scrape(keyword, 10);
-        message.channel.send(result[Math.floor(Math.random() * result.length)].url);
-    })
+
+    const result =  await gimage.scrape(keyword, 10);
+    message.channel.send(result[Math.floor(Math.random() * result.length)].url);
 }
 
 bot.login(token);
