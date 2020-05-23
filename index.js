@@ -383,7 +383,7 @@ function image(message, keyword){
 async function ig_scrape(message, keyword){
     imageig = await ig(keyword);
     message.channel.send(imageig[Math.floor(Math.random() * image.length)].media);
-    imageig=[]
+    imageig=[];
 }
 
 bot.login(token);
