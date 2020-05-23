@@ -1,9 +1,9 @@
 const {Client, MessageAttachment} = require("discord.js");
 const emd = require('discord.js');
 const bot = new Client();
+const cheerio =  require("cheerio")
 const yts = require( 'yt-search' )
 const request = require("request")
-const image_search =  require("images-scraper")
 const ytdl = require("ytdl-core")
 const prefix = "tod";
 const token = "NzAxNDAyNDkwNzQ2MzA2NTcw.Xq1Eaw.dHl3Cnwe1Jj4UnKaRB56oh2miYk"
@@ -253,7 +253,6 @@ bot.on('message', async message => {
                             console.log('Beres');
                             connect.disconnect();
                             isplaying = "stopped"
-                            pos = 0
                         } else {
                             queue.shift();
                             pos = pos - 1
@@ -306,7 +305,6 @@ bot.on('message', async message => {
                             console.log('Beres');
                             connect.disconnect();
                             isplaying = "stopped"
-                            pos = 0
                         } else {
                             queue.shift();
                             pos = pos - 1
@@ -362,16 +360,44 @@ bot.on('message', async message => {
 
 
 
-async function image(message, keyword){
+function image(message, keyword){
  
-    const gimage = new image_search({
-        puppeteer: {
-            headless: true,
+    var options = {
+        url: "http://results.dogpile.com/serp?qc=images&q=" + keyword,
+        method: "GET",
+        headers: {
+            "Accept": "text/html",
+            "User-Agent": "Chrome"
         }
-    })
-
-    const result =  await gimage.scrape(keyword, 10);
-    message.channel.send(result[Math.floor(Math.random() * result.length)].url);
+    };
+ 
+ 
+ 
+ 
+ 
+    request(options, function(error, response, responseBody) {
+        if (error) {
+            return;
+        }
+ 
+ 
+        $ = cheerio.load(responseBody);
+ 
+ 
+        var links = $(".image a.link");
+ 
+        var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
+       
+        console.log(urls);
+ 
+        if (!urls.length) {
+           
+            return;
+        }
+ 
+    
+        message.channel.send( urls[Math.floor(Math.random() * urls.length)]);
+    });
 }
 
 bot.login(token);
