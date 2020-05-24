@@ -386,7 +386,7 @@ async function ig_scrape(message, keyword){
         message.channel.send(imageig[Math.floor(Math.random() * imageig.length)].media);
         imageig=[];
     } catch(error){
-        message.channel.send("IG nya di private cuy. Gagal ngestalk deh hiya hiya :v");
+        message.channel.send("IG nya di private/salah username cuy. Gagal ngestalk deh hiya hiya :v");
     }
 }
 
