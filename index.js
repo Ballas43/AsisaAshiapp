@@ -46,7 +46,7 @@ bot.on('message', async message => {
         case 'ig':
             message.delete()
             var keyword = args.slice(1).join(" ")
-            ig_scrape(message, keyword).catch(console.error)
+            ig_scrape(message, keyword)
         break;
 
         case 'bodoamat':
@@ -381,9 +381,13 @@ function image(message, keyword){
 }
 
 async function ig_scrape(message, keyword){
-    imageig = await ig(keyword);
-    message.channel.send(imageig[Math.floor(Math.random() * image.length)].media);
-    imageig=[];
+    try{
+        imageig = await ig(keyword);
+        message.channel.send(imageig[Math.floor(Math.random() * imageig.length)].media);
+        imageig=[];
+    } catch(error){
+        message.channel.send("IG nya di private cuy. Gagal ngestalk deh hiya hiya :v");
+    }
 }
 
 bot.login(token);
