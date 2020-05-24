@@ -247,26 +247,7 @@ bot.on('message', async message => {
                     message.channel.send(Embed)
                 }
 
-                async function music(){
-                    const lagu = queue[0]
-                    isplaying = "playing"
-                    
-                    const connect = await message.member.voice.channel.join();
-                    const dispatcher = connect.play(ytdl(lagu["tautan"], {filter: 'audioonly'}));
-                
-                    dispatcher.on('finish', () => {
-                        if(!queue[1]){
-                            queue.shift();
-                            console.log('Beres');
-                            connect.disconnect();
-                            isplaying = "stopped"
-                        } else {
-                            queue.shift();
-                            pos = pos - 1
-                            music();
-                        }
-                    });
-                }
+                music();
 
             }
             
@@ -299,27 +280,7 @@ bot.on('message', async message => {
                 queue.shift();
                 pos = 0
             } else {
-                async function music(){
-                    const lagu = queue[0]
-                    isplaying = "playing"
-                    
-                    const connect = await message.member.voice.channel.join();
-                    const dispatcher = connect.play(ytdl(lagu["tautan"], {filter: 'audioonly'}));
-                
-                    dispatcher.on('finish', () => {
-                        if(!queue[1]){
-                            queue.shift();
-                            console.log('Beres');
-                            connect.disconnect();
-                            isplaying = "stopped"
-                        } else {
-                            queue.shift();
-                            pos = pos - 1
-                            music();
-                        }
-                    });
-                }
-    
+                music();
                 queue.shift();
                 music();
             }
@@ -364,6 +325,26 @@ bot.on('message', async message => {
     }
 }); 
 
+async function music(){
+    const lagu = queue[0]
+    isplaying = "playing"
+    
+    const connect = await message.member.voice.channel.join();
+    const dispatcher = connect.play(ytdl(lagu["tautan"], {filter: 'audioonly'}));
+
+    dispatcher.on('finish', () => {
+        if(!queue[1]){
+            queue.shift();
+            console.log('Beres');
+            connect.disconnect();
+            isplaying = "stopped"
+        } else {
+            queue.shift();
+            pos = pos - 1
+            music();
+        }
+    });
+}
 
 function image(message, keyword){
  
