@@ -30,7 +30,6 @@ bot.on("disconnect", () =>{
 })
 
 bot.on('message', async message => {
- 
     let args = message.content.substring(prefix.length).split(" ");
     switch (args[0]) {
         case 'image':
@@ -219,7 +218,7 @@ bot.on('message', async message => {
 
                     message.channel.send(Embed)
 
-                    music();
+                    music(message);
 
                 } else {
                     
@@ -246,9 +245,6 @@ bot.on('message', async message => {
 
                     message.channel.send(Embed)
                 }
-
-                music(message);
-
             }
             
             if (message.member.voice.channel) {
@@ -280,7 +276,6 @@ bot.on('message', async message => {
                 queue.shift();
                 pos = 0
             } else {
-                music();
                 queue.shift();
                 music(message);
             }
