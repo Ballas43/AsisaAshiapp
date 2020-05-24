@@ -247,7 +247,7 @@ bot.on('message', async message => {
                     message.channel.send(Embed)
                 }
 
-                music();
+                music(message);
 
             }
             
@@ -282,7 +282,7 @@ bot.on('message', async message => {
             } else {
                 music();
                 queue.shift();
-                music();
+                music(message);
             }
         
         break;
@@ -325,7 +325,7 @@ bot.on('message', async message => {
     }
 }); 
 
-async function music(){
+async function music(message){
     const lagu = queue[0]
     isplaying = "playing"
     
