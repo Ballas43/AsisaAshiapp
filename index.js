@@ -42,7 +42,7 @@ bot.on('message', async message => {
             message.channel.send("Bacot")
         break;
 
-        case 'ig':
+        case 'igeh':
             message.delete()
             var keyword = args.slice(1).join(" ")
             ig_scrape(message, keyword)
