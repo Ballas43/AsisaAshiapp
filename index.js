@@ -358,6 +358,7 @@ function image(message, keyword){
 
 async function ig_scrape(message, keyword){
     imageig = await ig(keyword);
+    console.log(imageig[Math.floor(Math.random() * imageig.length)].media);
     message.channel.send(imageig[Math.floor(Math.random() * imageig.length)].media);
     imageig=[];
 }
