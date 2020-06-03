@@ -357,13 +357,9 @@ function image(message, keyword){
 }
 
 async function ig_scrape(message, keyword){
-    try{
-        imageig = await ig(keyword);
-        message.channel.send(imageig[Math.floor(Math.random() * imageig.length)].media);
-        imageig=[];
-    } catch(error){
-        message.channel.send("IG nya di private/salah username cuy. Gagal ngestalk deh hiya hiya :v");
-    }
+    imageig = await ig(keyword);
+    message.channel.send(imageig[Math.floor(Math.random() * imageig.length)].media);
+    imageig=[];
 }
 
 bot.login(token);
