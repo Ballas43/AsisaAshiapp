@@ -44,8 +44,7 @@ bot.on('message', async message => {
 
         case 'igeh':
             message.delete()
-            var keyword = args.slice(1).join(" ")
-            ig_scrape(message, keyword)
+            ig_scrape(message, 'fena_angelina')
         break;
 
         case 'bodoamat':
