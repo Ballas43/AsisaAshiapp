@@ -1,7 +1,7 @@
 const {Client, MessageAttachment} = require("discord.js");
 const emd = require('discord.js');
 const bot = new Client();
-const ig = require('instagram-posts')
+const ig = require("instagram-posts")
 const image_search = require('g-i-s')
 const yts = require( 'yt-search' )
 const request = require("request")
@@ -42,9 +42,10 @@ bot.on('message', async message => {
             message.channel.send("Bacot")
         break;
 
-        case 'igeh':
+        case 'ig':
             message.delete()
-            ig_scrape(message, 'fena_angelina')
+            var keyword2 = args.slice(1).join(" ")
+            ig_scrape(message, keyword2)
         break;
 
         case 'bodoamat':
@@ -355,9 +356,9 @@ function image(message, keyword){
     }
 }
 
-async function ig_scrape(message, keyword){
-    imageig = await ig(keyword);
-    console.log(imageig[Math.floor(Math.random() * imageig.length)].media);
+async function ig_scrape(message, username){
+    imageig = await ig(username);
+    message.channel.send(imageig[Math.floor(Math.random() * imageig.length)].media);
     imageig=[];
 }
 
