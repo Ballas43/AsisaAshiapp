@@ -325,8 +325,6 @@ async function pixiv(message, word){
     const pixiv = new PixivApi();
     pixiv.login('user_rtmj8543', '89d2rKqSVrHkkEg', true).then(() => {
         return pixiv.searchIllust(word).then(hehe => {
-          console.log("Test: \n")
-          console.log(`https://www.pixiv.net/en/artworks/${hehe['illusts'][Math.floor(Math.random() * Object.keys(hehe['illusts']).length)]['id']}`)
           message.channel.send(`https://www.pixiv.net/en/artworks/${hehe['illusts'][Math.floor(Math.random() * Object.keys(hehe['illusts']).length)]['id']}`)
         });
     });
