@@ -1,11 +1,11 @@
 const {Client, MessageAttachment} = require("discord.js");
 const emd = require('discord.js');
 const bot = new Client();
-const ig = require("instagram-posts")
 const image_search = require('g-i-s')
 const yts = require( 'yt-search' )
 const request = require("request")
 const ytdl = require("ytdl-core")
+const PixivApi = require('pixiv-api-client');
 const prefix = "tod";
 const token = "NzAxNDAyNDkwNzQ2MzA2NTcw.Xq1Eaw.dHl3Cnwe1Jj4UnKaRB56oh2miYk"
 
@@ -42,10 +42,10 @@ bot.on('message', async message => {
             message.channel.send("Bacot")
         break;
 
-        case 'ig':
+        case 'pixiv':
             message.delete()
-            var keyword2 = args.slice(1).join(" ")
-            ig_scrape(message, keyword2)
+            var keyword = args.slice(1).join(" ")
+            pixiv(message, keyword)
         break;
 
         case 'bodoamat':
@@ -320,6 +320,18 @@ bot.on('message', async message => {
     }
 }); 
 
+
+async function pixiv(message, word){
+    const pixiv = new PixivApi();
+    pixiv.login('user_rtmj8543', '89d2rKqSVrHkkEg', true).then(() => {
+        return pixiv.searchIllust(word).then(hehe => {
+          console.log("Test: \n")
+          console.log(`https://www.pixiv.net/en/artworks/${hehe['illusts'][Math.floor(Math.random() * Object.keys(hehe['illusts']).length)]['id']}`)
+          message.channel.send(`https://www.pixiv.net/en/artworks/${hehe['illusts'][Math.floor(Math.random() * Object.keys(hehe['illusts']).length)]['id']}`)
+        });
+    });
+}
+
 async function music(message){
     const lagu = queue[0]
     isplaying = "playing"
@@ -354,12 +366,6 @@ function image(message, keyword){
         }
         results=[]
     }
-}
-
-async function ig_scrape(message, username){
-    imageig = await ig(username);
-    message.channel.send(imageig[Math.floor(Math.random() * imageig.length)].media);
-    imageig=[];
 }
 
 bot.login(token);
