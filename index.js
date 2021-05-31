@@ -7,7 +7,7 @@ const request = require("request")
 const ytdl = require("ytdl-core")
 const PixivApi = require('pixiv-api-client');
 const prefix = "tod";
-const token = "NzAxNDAyNDkwNzQ2MzA2NTcw.Xq1Eaw.dHl3Cnwe1Jj4UnKaRB56oh2miYk"
+const token = "<insert discord token>"
 
 
 const queue = [];
