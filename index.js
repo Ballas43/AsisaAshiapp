@@ -323,7 +323,7 @@ bot.on('message', async message => {
 
 async function pixiv(message, word){
     const pixiv = new PixivApi();
-    pixiv.login('user_rtmj8543', '89d2rKqSVrHkkEg', true).then(() => {
+    pixiv.login('<your user>', '<your password>', true).then(() => {
         return pixiv.searchIllust(word).then(hehe => {
           message.channel.send(`https://www.pixiv.net/en/artworks/${hehe['illusts'][Math.floor(Math.random() * Object.keys(hehe['illusts']).length)]['id']}`)
         });
